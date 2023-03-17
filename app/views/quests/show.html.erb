@@ -8,3 +8,32 @@
 
   <%= button_to "Destroy this quest", @quest, method: :delete %>
 </div>
+
+<h2>Scenes</h2>
+<% @quest.scenes.each do |scene| %>
+  <p>
+    <strong>Title:</strong>
+    <%= scene.title %>
+  </p>
+
+  <p>
+    <strong>scene:</strong>
+    <%= scene.body %>
+  </p>
+<% end %>
+
+<h2>Add a scene:</h2>
+<%= form_with model: [ @quest, @quest.scenes.build ] do |form| %>
+  <p>
+    <%= form.label :title %><br>
+    <%= form.text_field :title %>
+  </p>
+  <p>
+    <%= form.label :body %><br>
+    <%= form.text_area :body %>
+  </p>
+  <p>
+    <%= form.submit %>
+  </p>
+<% end %>
+
