@@ -1,5 +1,4 @@
 class Step < ApplicationRecord
-  belongs_to :scene 
-  has_one :scene
-  alias_attribute :source_scene, :scene
+  belongs_to :source_scene, class_name: 'Scene'
+  belongs_to :target_scene, class_name: 'Scene' 
 end

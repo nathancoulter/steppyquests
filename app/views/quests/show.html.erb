@@ -12,14 +12,16 @@
 <h2>Scenes</h2>
 <% @quest.scenes.each do |scene| %>
   <p>
-    <strong>Title:</strong>
-    <%= scene.title %>
+    <%= link_to scene.title, quest_scene_path(scene.quest, scene) %>
+  </p>
+  
+  <p>
+  <strong>id:</strong>
+  <%= scene.id %>
   </p>
 
-  <p>
-    <strong>scene:</strong>
-    <%= scene.body %>
-  </p>
+
+
 <% end %>
 
 <h2>Add a scene:</h2>
