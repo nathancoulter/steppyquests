@@ -1,22 +1,16 @@
 class StepsController < ApplicationController
-  before_action :set_step, only: %i[ show edit update destroy ]
 
   def create
-    @scene = scene.find(params[:scene_id])
+    @quest = Quest.find(params[:quest_id])
+    @scene = Scene.find(params[:scene_id])
     @step = @scene.steps.create(step_params)
-    redirect_to scene_path(@scene)
-  end
-    
-  def show
+    redirect_to quest_path(@quest)
   end
 
   private
 
-  def set_step
-    @step = step.find(params[:id])
-  end
-
   def step_params
-    params.require(:step).permit(:title, :body)
-  end
+      params.require(:step).permit(:choice, :target_scene_id)
+    end
+
 end
