@@ -12,16 +12,16 @@ have steps
 The End
 <p>
 <%= link_to "Return to quests?", quests_path %>
-</p>  
 <% end %>
 
 <h2>Steps</h2>
 <% @scene.steps.each do |step| %>
 
-  <p>
-    <%= link_to step.choice, scene_step_path(step.targetscene, step) %>
-    </p>, scene_step_path(step.scene, step) %>
-  </p>
+<p>
+step.target_scene
+</p>
+
+<%=link_to step.choice, quest_scene_path(@scene.quest, step.target_scene) %>
 
 <% end %>
 
