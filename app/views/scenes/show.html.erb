@@ -3,5 +3,42 @@
 <hr/>
 
 <p>
-<weak><%= @scene.body %><weak>
+    <%= @scene.body %>
 </p>
+
+<% if @scene.steps.any? %>
+have steps
+<% else %>
+The End
+<p>
+<%= link_to "Return to quests?", quests_path %>
+</p>  
+<% end %>
+
+<h2>Steps</h2>
+<% @scene.steps.each do |step| %>
+
+  <p>
+    <%= link_to step.choice, scene_step_path(step.targetscene, step) %>
+    </p>, scene_step_path(step.scene, step) %>
+  </p>
+
+<% end %>
+
+<h2>Add a step:</h2>
+<%= form_with model: [ @scene.quest, @scene, @scene.steps.build ] do |form| %>
+
+ <p>  
+    <%= form.label :choice %><br>
+    <%= form.text_field :choice %>
+ </p>
+
+ <p>
+    <%= form.label :target_scene_id %><br>
+    <%= form.collection_select(:target_scene_id, @scene.quest.scenes, :id, :title, prompt: true) %>
+ </p>
+
+ <p>
+  <%= form.submit %>
+ </p>
+<% end %>
