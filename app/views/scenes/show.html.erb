@@ -1,3 +1,4 @@
+<html>
 <h2><%= @scene.title %><h2>
 
 <hr/>
@@ -7,7 +8,6 @@
 </p>
 
 <% if @scene.steps.any? %>
-have steps
 <% else %>
 The End
 <p>
@@ -41,4 +41,10 @@ step.target_scene
  <p>
   <%= form.submit %>
  </p>
+
 <% end %>
+<div>
+
+<%= button_to "Delete", quest_scene_path(@scene.quest, @scene), method: :delete %>
+</div>
+ </html>
